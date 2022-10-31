@@ -1,13 +1,17 @@
 import './App.css';
+import Login from './components/Login';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Store from './components/Store';
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 
 
 function App() {
   return (
     <>
+      <Login>
+      </Login>
+      
       <Nav />
       <div className='course'>
         <Store nameCourse={"JavaScript"}
