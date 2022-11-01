@@ -3,20 +3,18 @@ import Login from './components/Login';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Store from './components/Store';
+import Router from './components/Router';
 // import React, { useEffect, useState } from 'react';
 
 
 function App() {
   return (
     <>
-      <Login>
-      </Login>
+    <Nav></Nav>
 
-      <Nav>
-        
+    <Router></Router>
+    < Login></ Login>
 
-
-      </Nav>
 
       <div className='course'>
         <Store nameCourse={"JavaScript"}

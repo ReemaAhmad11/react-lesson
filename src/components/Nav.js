@@ -33,10 +33,7 @@ export default function WithSubnavigation() {
   const [data, setData] = useState(["Javascript", " HTML", "React", "Angular", "C++", "Python"]);
   const [SearchFind, setSearchFind] = useState("");
 
-
-
   const search = () => {
-
     console.log(searchT);
     const arr1 =data.map((name)=>{
     return name.toLowerCase()
@@ -46,6 +43,8 @@ export default function WithSubnavigation() {
       setSearchFind(searchT);
       console.log();
     }}
+
+    
 
   return (
 
