@@ -33,26 +33,30 @@ export default function SimpleCard() {
   };
 
   const handleSubmit = event => {
-  event.preventDefault();
-  alert(`Email: ${email} & Password: ${password}`);}
+    if (setPassword.length === 0 && setEmail.length === 0) {
+      alert("try again");
+    } else {
+      alert("empty Email and password");
+    }
+  }
 
-   const ValidateLogin = (email, password) => {
-    let errors={};
-  
-    if(!email){
-      errors.email="يرجى إدخال الإيميل" 
-    } else if(!/\S+@\S+\.\S+/.test(email)){
-      errors.email="الإيميل غير صحيح"
+  const ValidateLogin = (email, password) => {
+    let errors = {};
+
+    if (!email) {
+      errors.email = "يرجى إدخال الإيميل"
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      errors.email = "الإيميل غير صحيح"
     }
-  
-    if(!password){
-      errors.password="يرجى إدخال كلمة المرور"
-    } else if(password.length < 5){
-      errors.password="الحد الأدنى ٥ خانات"
+
+    if (!password) {
+      errors.password = "يرجى إدخال كلمة المرور"
+    } else if (password.length < 5) {
+      errors.password = "الحد الأدنى ٥ خانات"
     }
-  
-    return errors.password || errors.email? errors: null;
-  
+
+    return errors.password || errors.email ? errors : null;
+
   }
 
 
@@ -76,19 +80,42 @@ export default function SimpleCard() {
           p={8}>
           <Stack spacing={4}
           >
-            
-            <FormControl id="email">
+
+
+            {/* <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input type="email" 
-               onChange={handleEmail}
+              <Input type="email"
+                onChange={handleEmail}
               />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password </FormLabel>
-              <Input type="password" 
-              onChange={handlePassword}
-              />
-            </FormControl>
+            </FormControl> */}
+
+            <Box my={4} textAlign="left">
+              <form onSubmit={handleSubmit}>
+                <FormControl isRequired >
+                  <FormLabel>Email</FormLabel>
+                  <Input type="email"
+                    placeholder="email@example.com"
+                    size="lg"
+                    onChange={log => setEmail(log.currentTarget.value)} 
+                    />
+                </FormControl>
+              </form>
+            </Box>
+
+
+            <Box my={4} textAlign="left">
+              <form onSubmit={handleSubmit}>
+                <FormControl isRequired >
+                  <FormLabel>password</FormLabel>
+                  <Input type="password"
+                    placeholder="*******"
+                    size="lg"
+                    onChange={log => setPassword(log.currentTarget.value)} />
+                </FormControl>
+              </form>
+            </Box>
+
+
             <Stack spacing={10}>
               <Stack
                 direction={{ base: 'column', sm: 'row' }}

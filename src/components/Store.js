@@ -30,7 +30,7 @@ export default function SocialProfileWithImage(props) {
           objectFit={'cover'}
         />
         <Flex justify={'center'} mt={4}>
-          <Image size="200px" src={props.img} alt="Course/Camp" rounded="50"/>
+          <Image size="200px" src={props.img} alt="Course/Camp" rounded="50" />
         </Flex>
 
         <Box p={6}>

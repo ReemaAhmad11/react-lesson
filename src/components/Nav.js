@@ -15,7 +15,7 @@ import {
   useBreakpointValue,
   useDisclosure,
   Image,
-
+  Input,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -23,11 +23,32 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import { SearchIcon } from '@chakra-ui/icons'
+import React, { useState } from "react";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
+  const [searchT, setsearchTarget] = useState("");
+  const [data, setData] = useState(["Javascript", " HTML", "React", "Angular", "C++", "Python"]);
+  const [SearchFind, setSearchFind] = useState("");
+
+
+
+  const search = () => {
+
+    console.log(searchT);
+    const arr1 =data.map((name)=>{
+    return name.toLowerCase()
+     })
+    
+    if(data.includes(searchT)){
+      setSearchFind(searchT);
+      console.log();
+    }}
+
   return (
+
     <Box>
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
@@ -56,16 +77,16 @@ export default function WithSubnavigation() {
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>  
+            color={useColorModeValue('gray.800', 'white')}>
             {/* logo */}
             <Image
-            h={'70'}
+              h={'70'}
               w={'30'}
-             src={
-            'LogoT.png'
-          }
-          objectFit={'cover'}
-              />
+              src={
+                'LogoT.png'
+              }
+              objectFit={'cover'}
+            />
             {/* Logo */}
 
           </Text>
@@ -74,6 +95,18 @@ export default function WithSubnavigation() {
             <DesktopNav />
           </Flex>
         </Flex>
+
+        <Stack spacing={2}>
+          {/* <Button  w={20} m={10} ml={170} mt={-1}></Button> */}
+
+          <Input type="text" placeholder='Search' size='md' w={700} mr={5} onChange={(e) => {
+            setsearchTarget(e.target.value)
+          }}
+          />
+
+          <IconButton colorScheme='purple' w={0} icon={<SearchIcon />} onClick={search}
+          />
+        </Stack>
 
         <Stack
           flex={{ base: 1, md: 0 }}
@@ -101,14 +134,19 @@ export default function WithSubnavigation() {
             Sign Up
           </Button>
         </Stack>
+
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
     </Box>
+
+
+
   );
 }
+
 
 const DesktopNav = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
@@ -263,7 +301,7 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    
+
     label: 'Inspiration',
     children: [
       {
@@ -285,7 +323,7 @@ const NAV_ITEMS: Array<NavItem> = [
         label: 'Job Board',
         subLabel: 'Find your dream design job',
         href: '#',
-     
+
 
       },
       {
